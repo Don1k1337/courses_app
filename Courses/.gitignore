@@ -1,0 +1,5 @@
+.idea
+.py[o,c]
+.pycache
+.env
+.dbsqlite3
