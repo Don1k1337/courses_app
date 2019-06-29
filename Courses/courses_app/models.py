@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
-    imgpath = models.CharField(max_length=64, default="", editable=False)
+    imgpath = models.CharField(max_length=64)
 
     def __str__(self):
         return str(self.name)
@@ -16,9 +18,8 @@ class Course(models.Model):
     def __str__(self):
         return str(self.name)
 
-
 class Branch(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="Branches")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="branches")
     latitude = models.TextField()
     longitude = models.TextField()
     address = models.TextField()
@@ -26,16 +27,18 @@ class Branch(models.Model):
     def __str__(self):
         return str(self.address)
 
-class ContactValue(models.Model):
-    type = models.CharField(max_length=64)
-
-    def __str__(self):
-        return str(self.name)
-
 class Contact(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="Contacts")
-    type = models.IntegerField()
-    value = models.ForeignKey(ContactValue, on_delete=models.CASCADE)
+    phone = "PHONE"
+    facebook = "FACEBOOK"
+    email = "EMAIL"
+    contact_choices = [
+        (phone, "PHONE"),
+        (facebook, "FACEBOOK"),
+        (email, "EMAIL")
+    ]
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="contacts")
+    type = models.CharField(max_length=64, choices=contact_choices, default='')
+    value = models.CharField(max_length=64, default='')
 
     def __str__(self):
         return str(self.type)
