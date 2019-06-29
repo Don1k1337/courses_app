@@ -1,5 +1,5 @@
-.idea
+.idea/
 .py[o,c]
 .pycache
-.env
+.env/
 .dbsqlite3
