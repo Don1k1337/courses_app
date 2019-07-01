@@ -15,5 +15,3 @@ class CategoryView(viewsets.ModelViewSet):
 class CourseView(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-
-
