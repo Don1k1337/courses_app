@@ -10,9 +10,9 @@ The mission of courses is to help people unleash thier full potential and improv
 
 Create a virtual environment to isolate our package dependencies locally
 
-'$ python3 -m venv env'
+`$ python3 -m venv myvenv`
 
-`$ source env/bin/activate`
+`$ source env/bin/activate``
 
 On Windows use `$ env\Scripts\activate'
 
