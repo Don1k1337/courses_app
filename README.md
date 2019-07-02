@@ -5,6 +5,18 @@ HOST: https://github.com/Don1k1337/courses_app/
 # courses_app API
 
 The mission of courses is to help people unleash thier full potential and improve their knowledge
+
+### Set-Up Instructions ###
+`$ python3 -m venv myvenv`
+
+`$ source env/bin/activate`
+
+`$ pip3 install -r requirements.txt`
+
+`$ python3 manage.py migrate`
+
+`$ python3 manage.py runserver `
+
 # Group Courses
 
 ## Courses Collection [/courses]
