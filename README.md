@@ -1,4 +1,5 @@
 FORMAT: 1A
+
 HOST: https://github.com/Don1k1337/courses_app/
 
 # courses_app API
