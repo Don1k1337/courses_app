@@ -7,9 +7,14 @@ HOST: https://github.com/Don1k1337/courses_app/
 The mission of courses is to help people unleash thier full potential and improve their knowledge
 
 ### Set-Up Instructions ###
-`$ python3 -m venv myvenv`
+
+#Create a virtual environment to isolate our package dependencies locally
+
+'$ python3 -m venv env'
 
 `$ source env/bin/activate`
+
+# On Windows use `env\Scripts\activate`
 
 `$ pip3 install -r requirements.txt`
 
