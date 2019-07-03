@@ -32,7 +32,7 @@ Create a virtual environment to isolate our package dependencies locally
         
 ### Get Individual Course [GET /course/id]
 + Parameter
-  + id: `1` - The ID of the course
+  + id: `4` - The ID of the course
   
 + Response 200 (application/json)
   + attributes
@@ -41,7 +41,7 @@ Create a virtual environment to isolate our package dependencies locally
 # Data Structures
 
 ## Course (object)
-- id: `1` (number) - The ID of the course
+- id: `4` (number) - The ID of the course
 - name: `English Zone` (string) - The title of the course
 - description: `Миссия English Zone заключается в том, чтобы помочь людям раскрыть весь их потенциал.` (string) - The description of the course
 - category: `Language courses` (string) - The category of the courses
