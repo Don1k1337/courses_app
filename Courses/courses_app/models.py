@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
@@ -28,18 +26,15 @@ class Branch(models.Model):
         return str(self.address)
 
 class Contact(models.Model):
-
     phone = "PHONE"
     facebook = "FACEBOOK"
     email = "EMAIL"
-
     contact_choices = [
         (phone, "PHONE"),
         (facebook, "FACEBOOK"),
         (email, "EMAIL")
     ]
-
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="contacts", null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="contacts")
     type = models.CharField(max_length=64, choices=contact_choices, default='')
     value = models.CharField(max_length=64, default='')
 

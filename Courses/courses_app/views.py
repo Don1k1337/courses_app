@@ -15,3 +15,7 @@ class CategoryView(viewsets.ModelViewSet):
 class CourseView(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+
+class BranchesView(viewsets.ModelViewSet):
+    queryset = Branch.objects.all()
+    serializer_class = BranchSerializer
