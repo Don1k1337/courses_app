@@ -14,6 +14,7 @@ class BranchSerializer(serializers.ModelSerializer):
         fields = ('address', 'latitude', 'longitude')
 
 
+
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
@@ -26,7 +27,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
-        fields = ['id','name','description','category','logo','contacts','branches',]
+        fields = ['id','name','description','category','logo','contacts','branches']
 
     def create(self, validated_data):
         if 'branches' in validated_data:
