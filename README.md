@@ -56,8 +56,10 @@ Create a virtual environment to isolate our package dependencies locally
 - value: `https://www.facebook.com/english.zone.kg/` (text) - The contact value
 - type: `3` (number) - The contact type
 - value: `ezone.kg@gmail.com` (text) - The contact value
+- Course: `English Zone` (string) - The title of the course
 
 ### Branches (object)
 - address: `Manas 58/ Aini - right next to the Manas university` (text) - Address of course
 - latitude: `42.847971` (number) - Cordinates of course
 - longitude: `74.586733` (number) - Cordinates of course
+- Course: `English Zone` (string) - The title of the course
