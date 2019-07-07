@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2f979216-631c-4d37-8896-7981820fc386" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/courses_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/courses_app/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -359,7 +357,7 @@
       <workItem from="1562131095107" duration="4051000" />
       <workItem from="1562301823487" duration="8741000" />
       <workItem from="1562482033190" duration="647000" />
-      <workItem from="1562499906329" duration="455000" />
+      <workItem from="1562499906329" duration="1182000" />
     </task>
     <servers />
   </component>
@@ -396,7 +394,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50910000" />
+    <option name="totallyTimeSpent" value="51637000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1296" height="741" extended-state="6" />
@@ -415,7 +413,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289256" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3289256" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3272727" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32561985" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3289256" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
