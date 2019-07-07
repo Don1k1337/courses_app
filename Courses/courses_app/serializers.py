@@ -11,14 +11,14 @@ class CategorySerializer(serializers.ModelSerializer):
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Branch
-        fields = ('address', 'latitude', 'longitude')
+        fields = ('address', 'latitude', 'longitude', 'course')
 
 
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ('type', 'value')
+        fields = ('type', 'value', 'course')
 
 
 class CourseSerializer(serializers.ModelSerializer):
