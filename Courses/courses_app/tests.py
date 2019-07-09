@@ -20,7 +20,7 @@ class CategoryTestCase(TestCase):
 
 
 class BranchTestCase(TestCase):
-    def course(name='English', description='description', category='category', logo='logo'):
+    def course(name='English', description='description', category='Category', logo='logo'):
         return Course.objects.create(name=name)
 
     def setUp(self):
@@ -37,10 +37,11 @@ class BranchTestCase(TestCase):
 
 
 class CourseTestCase(TestCase):
-    def create_category(name="ExampleName", imgpath="ImgPath"):
+    def create_category(name="English", imgpath="ImgPath"):
         return Category.objects.create(name=name, imgpath=imgpath)
 
     def setUp(self):
+        self.category = self.create_category()
         Course.objects.create(
             name='English',
             description='Миссия English Zone заключается в том, чтобы помочь людям раскрыть весь их потенциал.',
@@ -50,20 +51,17 @@ class CourseTestCase(TestCase):
 
     def test_course_category(self):
         english = Course.objects.get(name='English')
-        self.assertEqual(english.category_id, 1)
+        self.assertEqual(english.category_id, 2)
 
 
 class ContactTestCase(TestCase):
-    def create_contact(course='Course', type='Phone', value='Value'):
-        return Contact.objects.create(course=course, type=type, value=value)
-
     def setUp(self):
-        Contact.objects.create(
-            course='Language course',
-            type='Phone',
-            value='Value'
+        self.courses = Course.objects.create(
+            name='Name', discription='discription', category='Category', logo='default.jpg'
         )
 
-    def test_contact(self):
-        contact = Contact.objects.get(course='English')
-        self.assertEqual(contact.type, 'Phone')
+    def test_Courses(self):
+        Courses_get = Course.objects.get(
+            name='Name', discription='discription', category='Category', logo='default.jpg')
+        self.assertEqual(Courses_get, self.courses)
+
