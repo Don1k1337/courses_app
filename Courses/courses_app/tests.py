@@ -1,9 +1,9 @@
-
-from django.test import TestCase
-
-
+from courses_app.serializers import CourseSerializer
+from django.test import TestCase, Client
 from courses_app.models import *
-
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.utils import json
 
 
 class CategoryTestCase(TestCase):
@@ -20,7 +20,7 @@ class CategoryTestCase(TestCase):
 
 
 class BranchTestCase(TestCase):
-    def course(name='English', description='description', category='Category', logo='logo'):
+    def course(name='Name'):
         return Course.objects.create(name=name)
 
     def setUp(self):
@@ -32,7 +32,7 @@ class BranchTestCase(TestCase):
         )
 
     def test_branch(self):
-        branch = Branch.objects.get(name='Branch')
+        branch = Branch.objects.get(name='Branch', latitude='latitude', longitude='longitude', address='address')
         self.assertEqual(branch.address, 'address')
 
 
@@ -45,23 +45,87 @@ class CourseTestCase(TestCase):
         Course.objects.create(
             name='English',
             description='Миссия English Zone заключается в том, чтобы помочь людям раскрыть весь их потенциал.',
-            category_id=self.create_category().id,
+            category=self.category,
             logo='Logo'
         )
 
     def test_course_category(self):
         english = Course.objects.get(name='English')
-        self.assertEqual(english.category_id, 2)
+        self.assertEqual(english.category_id, 1)
 
 
-class ContactTestCase(TestCase):
+
+
+# initializing the APIClient app
+client = Client()
+
+class CreateNewCourse(TestCase):
+    """ Test module for inserting a course"""
+
     def setUp(self):
-        self.courses = Course.objects.create(
-            name='Name', discription='discription', category='Category', logo='default.jpg'
+        self.valid_payload = {
+            'name': 'Name',
+            'discription': 'discription',
+            'category': 'Category',
+            'logo': 'logo'
+
+        }
+        self.invalid_payload = {
+            'name': '',
+            'discription': 'none',
+            'category': 'none',
+            'logo': 'logo'
+        }
+
+    def test_create_valid_course(self):
+        response = client.post(
+            reverse('get_post_course'),
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
         )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-    def test_Courses(self):
-        Courses_get = Course.objects.get(
-            name='Name', discription='discription', category='Category', logo='default.jpg')
-        self.assertEqual(Courses_get, self.courses)
+    def test_create_invalid_course(self):
+        response = client.post(
+            reverse('get_post_course'),
+            data=json.dumps(self.invalid_payload),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+
+class UpdateCourseTest(TestCase):
+    """ Test module for updating an existing course """
+
+    def setUp(self):
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+        self.valid_payload = {
+            'name': 'Name',
+            'discription': 'discription',
+            'category': 'Category',
+            'logo': 'logo'
+
+        }
+        self.invalid_payload = {
+            'name': '',
+            'discription': 'none',
+            'category': 'none',
+            'logo': 'logo'
+        }
+    def test_valid_update_course(self):
+        response = client.put(
+            reverse('get_delete_update_course', kwargs={'pk': self.course.pk}),
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_invalid_update_course(self):
+        response = client.put(
+            reverse('get_delete_update_course', kwargs={'pk': self.course.pk}),
+            data=json.dumps(self.invalid_payload),
+            content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
