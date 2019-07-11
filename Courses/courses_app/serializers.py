@@ -30,10 +30,10 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = ['id','name','description','category','logo','contacts','branches']
 
     def create(self, validated_data):
-        if 'branches' in validated_data:
-            branches_data = validated_data.pop('branches')
-        if 'contacts' in validated_data:
-            contacts_data = validated_data.pop('contacts')
+
+        branches_data = validated_data.pop('branches') if 'branches' in validated_data else []
+
+        contacts_data = validated_data.pop('contacts') if 'contacts' in validated_data else []
         course = Course.objects.create(**validated_data)
         branches_list = []
         contacts_list = []
@@ -41,11 +41,11 @@ class CourseSerializer(serializers.ModelSerializer):
         print(branches_data)
         for branches_details in branches_data:
             branches_list.append(Branch.objects.create(
-            course_id = course.id,
-            **branches_details))
+                course_id=course.id,
+                **branches_details))
         for contacts_details in contacts_data:
             contacts_list.append(Contact.objects.create(
-            course_id = course.id,
-            **contacts_details))
+                course_id=course.id,
+                **contacts_details))
         course.save()
         return course
