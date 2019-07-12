@@ -100,8 +100,6 @@ class UpdateCourseTest(TestCase):
     def setUp(self):
         self.course = Course.objects.create(
             name='name', category='category', description='description', logo='logo')
-        self.course = Course.objects.create(
-            name='name', category='category', description='description', logo='logo')
         self.valid_payload = {
             'name': 'Name',
             'discription': 'discription',
@@ -129,3 +127,30 @@ class UpdateCourseTest(TestCase):
             data=json.dumps(self.invalid_payload),
             content_type='application/json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+class GetSingleCourseTest(TestCase):
+    """ Test module for GET single courses API """
+
+    def setUp(self):
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+        self.course = Course.objects.create(
+            name='name', category='category', description='description', logo='logo')
+
+    def test_get_valid_single_course(self):
+        response = client.get(
+            reverse('get_delete_update_course', kwargs={'pk': self.course.pk}))
+        course = Course.objects.get(pk=self.rambo.pk)
+        serializer = CourseSerializer(course)
+        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_invalid_single_course(self):
+        response = client.get(
+            reverse('get_delete_update_course', kwargs={'pk': 30}))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
