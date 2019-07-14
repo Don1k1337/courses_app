@@ -123,5 +123,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#static
-.static/
+database.sqlite
+logs
+media
+static
+*.pyc
+*.mo
+.venv

@@ -82,12 +82,13 @@ WSGI_APPLICATION = 'Courses.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangorestapi',
-        'USER': 'djangorestapiuser',
-        'PASSWORD': 'djangorestapipassword',
+        'NAME': 'apiDB',
+        'USER': 'api_admin',
+        'PASSWORD': 'api',
         'HOST': 'localhost',
         'PORT': '',
     }
