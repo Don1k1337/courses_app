@@ -29,7 +29,7 @@ SECRET_KEY = 'SECRET_KEY'
 DEBUG = config('DEBUG', cast=bool)
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['134.209.111.34', 'localhost']
 
 
 
@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'Courses.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'djangorestapi',
+        'USER': 'djangorestapiuser',
+        'PASSWORD': 'djangorestapipassword',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -123,17 +127,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-
-# Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -145,3 +140,4 @@ REST_FRAMEWORK = {
 import dj_database_url
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
