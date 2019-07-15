@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'Courses.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'apiDB',
+        'NAME': 'apidb',
         'USER': 'api_admin',
         'PASSWORD': 'apitesting123',
         'HOST': 'localhost',
